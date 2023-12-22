@@ -17,3 +17,5 @@ router.post("/books", postNewBook);
 router.put("/books/:id", updateBook);
 
 router.delete("/books/:id", deleteBook);
+
+module.exports = router
