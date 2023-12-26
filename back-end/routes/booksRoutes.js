@@ -3,7 +3,7 @@ const router = require("express").Router();
 const {
   getAllBooks,
   getBookById,
-  postNewBook,
+  addNewBook,
   updateBook,
   deleteBook,
 } = require("../controllers/books.controller");
@@ -12,7 +12,7 @@ router.get("/books", getAllBooks);
 
 router.get("/books/:id", getBookById);
 
-router.post("/books", postNewBook);
+router.post("/books", addNewBook);
 
 router.put("/books/:id", updateBook);
 
