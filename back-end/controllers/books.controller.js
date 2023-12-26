@@ -62,7 +62,7 @@ async function deleteBook(req, res) {
     const { id } = req.params;
     const deletedBook = await Book.findByIdAndDelete(id);
     if (deletedBook) {
-      return res.status(200).json(deletedBook + "was deleted");
+      return res.status(200).json(deletedBook);
     }
   } catch (error) {
     res.status(500).send(error.message);
