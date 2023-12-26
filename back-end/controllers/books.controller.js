@@ -3,8 +3,12 @@ const { Book } = require("../models/books");
 async function getAllBooks(req, res) {
   try {
     const allBooks = await Book.find();
-    if (allBooks) {
+    if (allBooks.length != 0) {
       return res.status(200).json(allBooks);
+    } else {
+      return res
+        .status(404)
+        .json("It seems that the books are hiding, look at another time");
     }
   } catch (error) {
     res.status(500).send(error.message);
@@ -42,9 +46,10 @@ async function postNewBook(req, res) {
 async function updateBook(req, res) {
   try {
     const { id } = req.params;
-    await Book.updateOne({ id }, req.body);
-    const updatedBook = await Book.findById(id);
-    if (updateBook) {
+    const updatedBook = await Book.findByIdAndUpdate(id, req.body, {
+      new: true,
+    });
+    if (updatedBook) {
       return res.status(200).json(updatedBook);
     }
   } catch (error) {
@@ -57,7 +62,7 @@ async function deleteBook(req, res) {
     const { id } = req.params;
     const deletedBook = await Book.findByIdAndDelete(id);
     if (deletedBook) {
-      return res.status(200).json(deletedBook);
+      return res.status(200).json(deletedBook + "was deleted");
     }
   } catch (error) {
     res.status(500).send(error.message);

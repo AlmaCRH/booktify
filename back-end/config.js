@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
 app.use(express.json());
-app.use("/", require("./routes/booksRoutes"));
+app.use("/api", require("./routes/booksRoutes"));
 
 app.get("/", async (req, res) => {
   return res.json({ message: "Hello world" });
