@@ -9,25 +9,7 @@ const pronounsOptions = [
   "prefer not to say",
 ];
 
-const logSchema = new mongoose.Schema({
-  favorites: {
-    type: Array,
-  },
-  reading: {
-    type: Array,
-  },
-  completed: {
-    type: Array,
-  },
-  paused: {
-    type: Array,
-  },
-  dropped: {
-    type: Array,
-  },
-});
-
-const Log = mongoose.model("Log", logSchema);
+const statusTags = ["Favorites", "Reading", "Completed", "Paused", "Dropped"];
 
 const UserSchema = new mongoose.Schema({
   username: {
@@ -51,10 +33,12 @@ const UserSchema = new mongoose.Schema({
       enum: pronounsOptions,
     },
   ],
-  log: {
-    type: mongoose.ObjectId,
-    ref: "Log",
-  },
+  log: [
+    {
+      bookId: { type: mongoose.Schema.Types.ObjectId, ref: "Book" },
+      status: { type: String, enum: statusTags },
+    },
+  ],
 });
 
 const User = mongoose.model("User", UserSchema);

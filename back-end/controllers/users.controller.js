@@ -1,4 +1,5 @@
-const { User, User } = require("../models/users");
+const { Book } = require("../models/books");
+const { User } = require("../models/users");
 
 async function getAllUsers(req, res) {
   try {
@@ -16,7 +17,7 @@ async function getUserById(req, res) {
     const { id } = req.params;
     const user = await User.findById(id);
     if (user) {
-      return res.status(200), json(user);
+      return res.status(200).json(user);
     } else {
       return res.status(404).send("User not found");
     }
@@ -53,7 +54,7 @@ async function updateUser(req, res) {
   }
 }
 
-async function deletedUser(req, res) {
+async function deleteUser(req, res) {
   try {
     const { id } = req.params;
     const deletedUser = await User.findByIdAndDelete(id);
@@ -65,10 +66,51 @@ async function deletedUser(req, res) {
   }
 }
 
-module.exports = {
-    getAllUsers,
-    getUserById,
-    addNewUser,
-    updateUser,
-    deletedUser
+async function addLog(req, res) {
+  try {
+    const { id } = req.params;
+    const { title, status } = req.body;
+    const user = await User.findById(id);
+    const book = await Book.findOne({ title });
+    
+    if (user && !user.log.includes(book)) {
+      user.log.push({ bookId: book._id, status: status });
+      const savedUser = await user.save();
+      return res.status(200).json(savedUser);
+    } else {
+      return res.status(404).send("User or book not found");
+    }
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
 }
+
+async function updateStatus(req, res) {
+  try {
+    const { id } = req.params;
+    const { title, status } = req.body;
+
+    const user = await User.findById(id);
+    const book = await Book.findOne({ title });
+    if (user && book) {
+      book.status = status;
+      const savedBook = await book.save();
+      const savedUser = await user.save();
+      return res.status(200).json({user: savedUser, book: savedBook});
+    } else {
+      return res.status(400).send("User or book not found, cannot update");
+    }
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+}
+
+module.exports = {
+  getAllUsers,
+  getUserById,
+  addNewUser,
+  updateUser,
+  deleteUser,
+  addLog,
+  updateStatus,
+};

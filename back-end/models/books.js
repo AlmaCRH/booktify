@@ -56,6 +56,7 @@ const BookSchema = new mongoose.Schema({
     type: [String],
     enum: allGenres,
     required: true,
+    lowercase: true,
   },
   publisher: {
     type: String,
