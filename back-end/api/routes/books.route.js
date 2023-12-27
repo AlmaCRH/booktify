@@ -8,14 +8,19 @@ const {
   deleteBook,
 } = require("../controllers/books.controller");
 
+const {checkAdmin, checkAuth} = require("../middlewares/auth")
+
+//Users
 router.get("/", getAllBooks);
 
 router.get("/:id", getBookById);
 
-router.post("/", addNewBook);
 
-router.put("/:id", updateBook);
+//Admins
+router.post("/", checkAuth, checkAdmin, addNewBook);
 
-router.delete("/:id", deleteBook);
+router.put("/:id", checkAuth, checkAdmin, updateBook);
+
+router.delete("/:id", checkAuth, checkAdmin, deleteBook);
 
 module.exports = router;

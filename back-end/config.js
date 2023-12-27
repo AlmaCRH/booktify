@@ -1,10 +1,19 @@
 const express = require("express");
-const mongoose = require("mongoose");
-const app = express();
-app.use(express.json());
-app.use("/api", require("./routes/index"));
+const cors = require("cors");
+const morgan = require("morgan");
+const { connect } = require("./database/index");
 
-const start = async () => {
+const connection = async () => {
+  const app = express()
+    .use(cors())
+    .use(morgan("dev"))
+    .use(express.json())
+    .use("/api", require("./api/routes/index"))
+    .listen(3002, () => console.log("Server started on port 3002"));
+  await connect();
+};
+
+/* const start = async () => {
   try {
     await mongoose.connect("mongodb://localhost:27017/bookApp");
     console.log("Connected to Mongo!");
@@ -14,7 +23,7 @@ const start = async () => {
     process.exit(1);
   }
 };
+ */
 
-module.exports = { app };
-
-start();
+module.exports = {connection}
+connection();

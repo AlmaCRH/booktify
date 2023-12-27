@@ -9,7 +9,7 @@ const pronounsOptions = [
   "prefer not to say",
 ];
 
-const statusTags = ["Favorites", "Reading", "Completed", "Paused", "Dropped"];
+const statusTags = ["Reading", "Completed", "Paused", "Dropped, Pending"];
 
 const UserSchema = new mongoose.Schema({
   username: {
@@ -18,10 +18,20 @@ const UserSchema = new mongoose.Schema({
   },
   profile_pic: {
     type: String,
+    default: "uwu"
   },
   email: {
     type: String,
     required: true,
+  },
+  password: {
+    type: String,
+    required: true
+  },
+  role: {
+    type: String,
+    enum: ["member", "admin"],
+    default: "member"
   },
   date_of_birth: {
     type: Date,
