@@ -6,7 +6,7 @@ const genreOptions = {
     "Science Fiction",
     "Dystopian",
     "Action & Adventure",
-    "Mistery",
+    "Mystery",
     "Horror",
     "Thriller & Suspense",
     "Historical Fiction",
@@ -66,8 +66,8 @@ const BookSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  hardcover: {
-    type: String,
+  number_of_pages: {
+    type: Number,
     required: true,
   },
   ISBN10: {
@@ -76,6 +76,10 @@ const BookSchema = new mongoose.Schema({
     maxLength: 10,
     unique: true,
   },
+  cover_image: {
+    type: String,
+
+  }
 });
 
 //Now, we create a Book model based on our schema and export it
