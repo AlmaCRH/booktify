@@ -3,7 +3,6 @@ import api from "./config";
 const getAllBooks = async () => {
   try {
     const { data } = await api.get("/books");
-    console.log(data);
     return data;
   } catch (error) {
     return error.message;

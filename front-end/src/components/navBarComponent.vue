@@ -9,7 +9,7 @@ const toggle = () => {
 </script>
 
 <template>
-  <div class="h-[69px] flex justify-center items-center space-x-80 bg-black">
+  <div class="h-[69px] flex justify-center items-center space-x-60 bg-black sm:bg-olivine">
     <section class="h-[52px] w-[52px]">
       <img src="../assets/Ellipse 1.png" />
     </section>

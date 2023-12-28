@@ -2,7 +2,7 @@
 </script>
 
 <template>
-<div class="h-2.5"></div>
+<div class=" mb-4"></div>
 </template>
 
 

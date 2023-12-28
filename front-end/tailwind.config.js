@@ -9,6 +9,7 @@ export default {
       olive: "#394032",
       olivine: "#8DAB7F",
       mindaro: "#CFEE9E",
+      white: "#FFFFFF"
     },
     extend: {
     },

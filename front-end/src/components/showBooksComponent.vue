@@ -10,15 +10,12 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="flex bg-black h-screen">
-    <div class="flex-col flex items-center" v-for="(book, idx) in books" :key="idx">
-      <img class="w-[127px] h-[153px] border-4 border-green" src="../assets/cover.jpeg" />
+  <div class="grid grid-cols-2 place-items-center bg-black">
+    <div class="" v-for="(book, idx) in books" :key="idx">
+      <img class="w-[127px] h-[163px] border-4 border-green mb-1" :src=book.cover_image />
+      
+      <h3 class="text-center text-white">{{ book.title }}</h3>
       <dividerComponent />
-      <h3 class="text-center">{{ book.title }}</h3>
-      <span v-for="(genre, idx) in book.genres" :key="idx">
-        {{ genre }} <br />
-      </span>
-      <span>{{ book.publisher }}</span>
     </div>
   </div>
 </template>
