@@ -2,7 +2,8 @@ import api from "./config";
 
 const getAllBooks = async () => {
   try {
-    const { data } = await api.get("books/");
+    const { data } = await api.get("/books");
+    console.log(data);
     return data;
   } catch (error) {
     return error.message;
@@ -43,16 +44,16 @@ const updateBook = async (id, body) => {
 };
 
 const deleteBook = async (id) => {
-    try {
-        const {data} = await api.delete(`/books/id`, {
-            headers: {
-                token: localStorage.getItem("token")
-            }
-        })
-        return data
-    } catch(error){
-        return error.message
-    }
-}
+  try {
+    const { data } = await api.delete(`/books/id`, {
+      headers: {
+        token: localStorage.getItem("token"),
+      },
+    });
+    return data;
+  } catch (error) {
+    return error.message;
+  }
+};
 
-export {getAllBooks, getBookById, addNewBook, updateBook, deleteBook}
+export { getAllBooks, getBookById, addNewBook, updateBook, deleteBook };
