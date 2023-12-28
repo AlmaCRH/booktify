@@ -8,22 +8,10 @@ const connection = async () => {
     .use(cors())
     .use(morgan("dev"))
     .use(express.json())
-    .use("/api", require("./api/routes/index"))
-    .listen(3002, () => console.log("Server started on port 3002"));
+    .use("/api", require("./api/routes/index"));
   await connect();
+  app.listen(3002, () => console.log("Server started on port 3002"));
 };
 
-/* const start = async () => {
-  try {
-    await mongoose.connect("mongodb://localhost:27017/bookApp");
-    console.log("Connected to Mongo!");
-    app.listen(3013, () => console.log("Server started on port 3012"));
-  } catch (error) {
-    console.error(error);
-    process.exit(1);
-  }
-};
- */
-
-module.exports = {connection}
+module.exports = { connection };
 connection();

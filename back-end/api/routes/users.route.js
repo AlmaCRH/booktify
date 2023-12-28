@@ -7,7 +7,7 @@ const {
   updateUser,
   deleteUser,
   addLog,
-  updateStatus,
+  updateLogStatus,
   updateMyAccount,
   deleteMyAccount
 } = require("../controllers/users.controller");
@@ -18,12 +18,12 @@ const {checkAdmin, checkAuth} = require("../middlewares/auth")
 router.get("/profile/:id", getUserById);
 router.put("/profile/:userId", checkAuth, updateMyAccount);
 router.delete("/profile/:id", checkAuth, deleteMyAccount);
-router.post("/:id/log", checkAuth, addLog)
-router.put("/:id/log",checkAuth, updateStatus)
+router.post("/profile/:id/log", checkAuth, addLog)
+router.put("/profile/:id/log",checkAuth, updateLogStatus)
 
 
 //Admins
-router.get("/",  getAllUsers);
+router.get("/", checkAuth, checkAdmin, getAllUsers);
 router.post("/", checkAuth, checkAdmin, addNewUser);
 router.delete("/:id", checkAuth, checkAdmin, deleteUser);
 router.put("/:id", checkAuth, checkAdmin, updateUser);

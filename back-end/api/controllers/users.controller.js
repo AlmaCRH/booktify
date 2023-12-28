@@ -92,7 +92,7 @@ async function addLog(req, res) {
   }
 }
 
-async function updateStatus(req, res) {
+async function updateLogStatus(req, res) {
   try {
     const { id } = req.params;
     const { title, status } = req.body;
@@ -152,7 +152,7 @@ module.exports = {
   updateUser,
   deleteUser,
   addLog,
-  updateStatus,
+  updateLogStatus,
   updateMyAccount,
   deleteMyAccount,
 };
