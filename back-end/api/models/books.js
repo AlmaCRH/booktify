@@ -58,6 +58,10 @@ const BookSchema = new mongoose.Schema({
     required: true,
     lowercase: true,
   },
+  author: {
+    type: String,
+    required: true
+  },
   publisher: {
     type: String,
     required: true,

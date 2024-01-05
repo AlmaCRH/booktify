@@ -9,7 +9,7 @@ const pronounsOptions = [
   "prefer not to say",
 ];
 
-const statusTags = ["Reading", "Completed", "Paused", "Dropped, Pending"];
+const statusTags = ["Reading", "Completed", "Paused", "Dropped", "To read", "Favorites"];
 
 const UserSchema = new mongoose.Schema({
   username: {
