@@ -1,6 +1,6 @@
 <template>
     <div>
-        this is bookdetails
+        This is singup
     </div>
 </template>
 

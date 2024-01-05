@@ -1,6 +1,6 @@
 <template>
     <div>
-        this is bookdetails
+        this is bookshelve
     </div>
 </template>
 

@@ -1,6 +1,8 @@
 <template>
     <div>
-        this is bookdetails
+        <router-link :to="{name: 'Singup'}">
+        Singup
+       </router-link>
     </div>
 </template>
 

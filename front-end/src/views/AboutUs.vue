@@ -1,6 +1,6 @@
 <template>
     <div>
-        this is bookdetails
+        This is us, hi us!!
     </div>
 </template>
 
