@@ -2,7 +2,7 @@
   <div
     class="bg-[url('./assets/coverHome.jpeg')] bg-cover bg-center flex h-36 w-auto items-center justify-center flex-col"
   >
-    <h3 class="w-28 text-3xl">Booktify</h3>
+    <h3 class="w-28 text-3xl shadow">Booktify</h3>
     <span class="w-52">Unravel the secret of books</span>
   </div>
 
