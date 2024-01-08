@@ -2,18 +2,16 @@
 import { ref } from "vue";
 import loginNavButtonComponent from "./loginNavButtonComponent.vue";
 import signupNavButtonComponent from "./signupNavButtonComponent.vue";
-const show = ref(false);
+const open = ref(false);
+
 
 const toggle = () => {
-  console.log(show);
-  show.value = !show.value;
-};
+  open.value = !open.value
+}
 </script>
 
 <template>
-  <div
-    class="h-[69px] flex justify-center bg-black sm:bg-olivine"
-  >
+  <div class="h-[69px] flex justify-center bg-navbar sticky">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -34,24 +32,40 @@ const toggle = () => {
         <img src="../assets/Ellipse 1.png" />
       </router-link>
     </section>
-    <section @click="toggle" class="h-[22px] w-[39.2px]">
-      <img src="../assets/Menu Icon.png" />
-    </section>
-    <!-- Here goes the menu -->
-    <div class=" h-screen w-3/4">
-      <router-link :to="{name:'Profile'}">
-        <span>Profile</span>
-      </router-link>
-      <router-link :to="{name:'Bookshelve'}">
-        <span>Books</span>
-      </router-link>
-      <router-link :to="{name:'AboutUs'}">
-        <span>About us</span>
-      </router-link>
-      <loginNavButtonComponent/>
-      <signupNavButtonComponent/>
+    <button @click="toggle()">
+      <img src="../assets/Menu Icon.png"/>
+    </button>
+    <!-- Here goes the sidebar -->
+    <div class="relative flex min-h-screen overflow-hidden"
+    :class="[open ? 'max-w-lg' : 'max-w-0']">
+      <!-- sidebar -->
+      <div class="bg-olive flex flex-col text-white w-72">
+        <span class="mr-auto ml-auto">Booktify</span>
+
+        <section>
+         <!--  Welp <span>User</span> <span>View Profile</span> -->
+        </section>
+        <section class="flex flex-col items-end" >
+          <router-link :to="{ name: 'Profile' }"><span class="text-white">Profile</span>  </router-link>
+    <router-link :to="{ name: 'Bookshelve' }" target="_blank"><span class="text-white">Books</span>  </router-link>
+    <router-link :to="{ name: 'AboutUs' }" target="_blank">
+      <span class="text-white">About us</span>
+    </router-link>
+        </section>
+        <section class="flex justify-center space-x-5">
+        <loginNavButtonComponent/>
+        <signupNavButtonComponent/>
+        </section>
+
+        
+
+    <!--     <section class="h-[52px] w-[52px] ">
+      
+        <img src="../assets/Ellipse 1.png" />
+      
+    </section> -->
+      </div>
     </div>
   </div>
 </template>
-
 <style scoped></style>

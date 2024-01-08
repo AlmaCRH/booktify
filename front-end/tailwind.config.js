@@ -8,7 +8,9 @@ export default {
       olive: "#394032",
       olivine: "#8DAB7F",
       mindaro: "#CFEE9E",
-      white: "#FFFFFF"
+      white: "#FFFFFF",
+      footer: "#24261E",
+      navbar: "#2F3227"
     },
     extend: {
     },

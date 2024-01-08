@@ -1,7 +1,7 @@
 <template>
     <div>
        <router-link :to="{name: 'Login'}">
-        Login
+        <span class="text-white">Login</span>
        </router-link>
     </div>
 </template>

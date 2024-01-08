@@ -1,6 +1,12 @@
 <template>
-    <div>
-        This is login
+    <div class="h-screen">
+        <form>
+            <label>
+                Email:
+               
+            </label>
+            <input type="email"/>
+        </form>
     </div>
 </template>
 
